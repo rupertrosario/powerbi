@@ -1,0 +1,20 @@
+let
+    BaseUrl = "https://YOUR-CLUSTER-FQDN",
+    ApiKey  = "PASTE_API_KEY_HERE",
+
+    JsonOut =
+        Json.Document(
+            Web.Contents(
+                BaseUrl,
+                [
+                    RelativePath = "/irisservices/api/v1/public/cluster",
+                    Headers = [
+                        apiKey = ApiKey,
+                        Accept = "application/json"
+                    ],
+                    Timeout = #duration(0,0,30,0)
+                ]
+            )
+        )
+in
+    JsonOut
